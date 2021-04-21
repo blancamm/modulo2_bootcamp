@@ -22,7 +22,11 @@ print(b)
 
 sumatorio = reduce(lambda x, y: x + y, range(101))
 
-sumatorioDobles = reduce(lambda x, y : x + y*2, lista) #no funciona porque el primer x no lo multiplica por dos
+#sumatorioDobles = reduce(lambda x, y : x + y*2, lista) #no funciona porque el primer x no lo multiplica por dos
+#la manera de resolver esta:
+l = lista [:] #para copiar la lista y poder modificarla sin modificar la original
+l.insert(0,0)
+sumatorioDobles = reduce(lambda x, y : x + y*2, l)
 
 print(sumatorio)
 print(sumatorioDobles)
