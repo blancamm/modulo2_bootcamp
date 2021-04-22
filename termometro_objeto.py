@@ -1,0 +1,44 @@
+#se va a realizar el ejercicio de conversor de temperaturas
+#definiendo un objeto que sera un conversor de temperaturas
+
+class Termometro():
+    def __init__(self):
+        self.__unidadM = 'C' #ponemos grados centigrados por defecto
+        self.__temperatura = 0
+        
+    def __conversor(self, temperatura, unidad):
+        if unidad.upper().strip() == 'C':
+            return '{} ºF'.format(temperatura *9/5 +32)
+        elif unidad.upper().strip() == 'F':
+            return '{} ºC'.format((temperatura-32) *5/9)
+        else:
+            return 'unidad incorrecta'
+        
+    def __str__(self):
+        return '{}º {}'.format(self.__temperatura, self.__unidadM)
+        
+    def unidadMedida (self, uniM = None):
+        if uniM == None:
+            return self.__unidadM
+        else:
+            if uniM == 'F' or uniM == 'C':
+                self.__unidadM = uniM
+                
+    def temp(self, temperatura = None):
+        if temperatura == None:
+            return self.__temperatura
+        else:
+            self.__temperatura = temperatura
+            
+    def mide(self, uniM = None):
+        if uniM ==None or uniM == self.__unidadM:
+            return self.__str__()
+        else:  #llama al conversor
+            return self.__conversor(self.__temperatura, self.__unidadM)
+
+#posibles instrucciones:
+mitermometro = Termometro()
+mitermometro.temp(32)
+mitermometro.unidadMedida('F')
+print(mitermometro.mide('C') ) #me tiene que dar 0.0 ºC      
+        
